@@ -108,6 +108,11 @@ body {
     margin-right: 8px;
 }
 
+.add-product-button:hover {
+    background-color: hsl(158, 36%, 22%);
+    cursor: pointer;
+}
+
 @media (max-width: 680px) {
     .product-card {
         width: 345px;
