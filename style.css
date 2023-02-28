@@ -49,7 +49,116 @@ h6 {
     overflow-wrap: break-word;
 }
 
+/* Only used for HTML injection via JS: */
 #root,
 #__next {
     isolation: isolate;
+}
+
+/* --------------- */
+/* End Style Reset */
+/* --------------- */
+
+
+/* The ":root" pseudo-class represents the <html> element, but has higher specificity than the "html" selector. */
+:root {
+    /* This is where we set up custom properties for the page. */
+
+    /* Colors */
+    /* The color property names here have numbers appended to them that indicate at a quick glance the lightness of the color. */
+    --clr-primary-400: hsl(158, 36%, 37%);
+    --clr-primary-500: hsl(158, 36%, 20%);
+    --clr-secondary-200: hsl(30, 38%, 92%);
+
+    --clr-neutral-900: hsl(212, 21%, 14%);
+    --clr-neutral-400: hsl(228, 12%, 48%);
+    --clr-neutral-100: hsl(0, 0%, 100%);
+
+    /* Font Families */
+    --ff-accent: 'Fraunces', serif;
+    --ff-base: 'Montserrat', sans-serif;
+
+    /* Font Weights */
+    --fw-regular: 500;
+    --fw-bold: 700;
+}
+
+body {
+    font-family: var(--ff-base);
+    font-weight: var(--fw-regular);
+    color: var(--clr-neutral-400);
+    /* Use "rem" instead of "px". "rem" is related to the font size of the root element. */
+    font-size: 0.875rem;
+    background-color: var(--clr-secondary-200);
+
+    /* Vertically centering the content in the body. (The body was already given a 100% height in the style reset above.) */
+    display: flex;
+    align-items: center;
+
+    margin: 1rem;
+}
+
+.product {
+    /* Locally scoped custom properties (only available to this class and nested elements within this class). */
+    --content-padding: 1.5rem;
+    --content-spacing: 1rem;
+
+    background-color: var(--clr-neutral-100);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.product__content {
+    padding: var(--content-padding);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--content-spacing);
+}
+
+.product__category {
+    text-transform: uppercase;
+    /* "em" is related to the font size of the parent. */
+    letter-spacing: 0.5em;
+    font-size: 0.8125rem;
+}
+
+.product__title {
+    font-size: 2rem;
+    line-height: 1;
+    font-family: var(--ff-accent);
+    color: var(--clr-neutral-900);
+}
+
+.product__price {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.product__price__after {
+    font-size: 2rem;
+    font-family: var(--ff-accent);
+    color: var(--clr-primary-400);
+}
+
+.product__cart-button {
+    cursor: pointer;
+    padding: 0.75em 1.5em;
+    border: 0;
+    border-radius: 0.5rem;
+    background-color: var(--clr-primary-400);
+    color: var(--clr-neutral-100);
+    /* font-weight: var(--fw-bold); */
+    font-size: 0.925rem;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.product__cart-button:is(:hover, :focus) {
+    background-color: var(--clr-primary-500);
 }
